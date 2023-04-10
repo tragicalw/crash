@@ -15,13 +15,13 @@ end
 -- herkese açık oyunlarda oyuncu kontrolü yapmak için oyuncu katılımını dinliyoruz
 game.Players.PlayerAdded:Connect(function(player)
     if not checkWhitelist() then
-        player:Kick("hani whitelist bebeğim")
+        player:Kick("whitelistde degilsin")
     end
 end)
 
 -- özel oyunlarda oyuncu kontrolü yapmak için oyun başlangıcını dinliyoruz
 if not checkWhitelist() then
-    player:Kick("hani whitelist bebeğim")
+    player:Kick("whitelistte degilsin")
 end
 
 
