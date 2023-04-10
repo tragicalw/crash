@@ -1,0 +1,61 @@
+local whitelist = {"2344572684", "502657945 "} -- buraya belirlediğiniz kullanıcı ID'lerini ekleyin
+local player = game.Players.LocalPlayer
+
+-- oyuncunun ID'sini kontrol etmek için bir fonksiyon yazıyoruz
+function checkWhitelist()
+    local playerId = tostring(player.UserId)
+    for i, userId in pairs(whitelist) do
+        if userId == playerId then
+            return true
+        end
+    end
+    return false
+end
+
+-- herkese açık oyunlarda oyuncu kontrolü yapmak için oyuncu katılımını dinliyoruz
+game.Players.PlayerAdded:Connect(function(player)
+    if not checkWhitelist() then
+        player:Kick("hani whitelist bebeğim")
+    end
+end)
+
+-- özel oyunlarda oyuncu kontrolü yapmak için oyun başlangıcını dinliyoruz
+if not checkWhitelist() then
+    player:Kick("hani whitelist bebeğim")
+end
+
+
+-- init
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))()
+local venyx = library.new("3864", 5013109572)
+
+
+
+local themes = {
+    Background = Color3.fromRGB(24, 24, 24),
+    Glow = Color3.fromRGB(0, 0, 0),
+    Accent = Color3.fromRGB(10, 10, 10),
+    LightContrast = Color3.fromRGB(20, 20, 20),
+    DarkContrast = Color3.fromRGB(14, 14, 14),
+    TextColor = Color3.fromRGB(255, 255, 255)
+} 
+
+local page = venyx:addPage("HESAP", 5012544693) local section1 = page:addSection("Üyelik Bilgileri")
+local section1 = page:addSection("Sumlows - Sınırsız - Ryuijin#1742")
+
+local page = venyx:addPage("MAIN", 5012544693)
+local section1 = page:addSection("Crash")
+section1:addButton("Click To Crash", function()
+	print("Clicked")
+	game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "3864", -- Required
+	Text = "Crashing Progressing", -- Required
+	Icon = "rbxassetid://11401835376" -- Optional
+})
+----------------------------------------------
+wait(50)
+game.Players.LocalPlayer:Kick("crashed successfully")
+end)
+
+local page = venyx:addPage("CREDITS", 5012544693) local section1 = page:addSection("joshie#3864")
+local section1 = page:addSection("Sharing without this credits consider stealing")
